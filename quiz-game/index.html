@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz Game</title>
+    
+        <!-- Link to Stylesheet -->
+        <link rel="stylesheet" href="style.css">
+    
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="manifest.json">
+    
+        <!-- Meta Tags for PWA -->
+        <meta name="theme-color" content="#667eea">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+        <!-- Icons for Apple Devices -->
+        <link rel="apple-touch-icon" href="icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="icon-512x512.png">
+    
+        <!-- Custom Favicon -->
+        <link rel="icon" href="favicon.png/ideas.png" type="image/x-icon">
+    
+        <!-- External Libraries -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <!-- Section Selector -->
+    <div id="section-selector" class="selector">
+        <h2>Select a Section:</h2>
+        <button class="section-btn" data-section="Math">Math</button>
+        <button class="section-btn" data-section="Science">Science</button>
+    </div>
+
+    <!-- Difficulty Selector -->
+    <div id="difficulty-selector" class="selector hidden">
+        <h2>Select Difficulty:</h2>
+        <button class="difficulty-btn" data-difficulty="Easy">Easy</button>
+        <button class="difficulty-btn" data-difficulty="Medium">Medium</button>
+        <button class="difficulty-btn" data-difficulty="Hard">Hard</button>
+    </div>
+
+    <!-- Quiz Container -->
+    <div class="quiz-container hidden">
+        <h1>Quiz Time! 🚀</h1>
+        <div id="question" class="question"></div>
+        <div id="options" class="options"></div>
+        <button id="next-btn" class="next-btn">Next Question</button>
+        <div id="score" class="score">Score: 0</div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+
+    <!-- Particles Background -->
+    <div class="particles"></div>
+
+    <!-- Sound Elements -->
+    <audio id="correct-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"></audio>
+    <audio id="wrong-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+    <audio id="timer-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-fast-clock-ticking-1064.mp3"></audio>
+
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(() => console.log('Service Worker Registered'))
+                    .catch((error) => console.error('Service Worker Registration Failed:', error));
+            });
+        }
+    </script>
+</body>
+</html>
